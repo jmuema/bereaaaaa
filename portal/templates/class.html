@@ -1,0 +1,48 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+{{ block.super }}
+{% load static %}
+{% load bootstrap4 %}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<div class="container">
+<b><h5>Please select your class to access all notes:</h5></b>
+    <div class="row">
+        {% for class_item in classes %}
+        <div class="col-md-6">
+
+            <br>
+
+
+            <div class="w3-card-4" style="width:80%">
+
+                <img src="{{community_item.community_image.url}}" alt="Alps" style="width:100%">
+
+                <div class="container">
+                    <h4 class="card-title">{{ class_item.class_name }} </h4>
+                    <p class="card-text">
+                       
+                    </p>
+                    <a href="{% url 'unit' class_item.id %} " class="btn btn-danger">
+                        View notes
+                    </a>
+
+
+                    <div class="w3-container w3-center">
+
+                        <h5>{{ class_item.title }}</h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        {% empty %}
+    </div>
+    {% endfor %}
+
+    {% endblock %}
